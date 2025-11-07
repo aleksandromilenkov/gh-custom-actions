@@ -12,6 +12,10 @@ inputs:
     description: 'The folder containing the built website files.'
     required: true
     default: 'dist'
+  outputs:
+    website-url:
+      description: 'The URL of the deployed website.'
+      value: ${{ steps.deploy.outputs.website-url }}
 runs:
   using: 'node20'
   # pre:

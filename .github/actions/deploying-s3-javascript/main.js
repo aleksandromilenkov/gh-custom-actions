@@ -13,6 +13,10 @@ function run() {
     // will be executed in a regular shell in our runner
     // will automatically look for aws access key and secret key in the environment variables
     exec.exec(`aws s3 sync ${distFolder} ${bucketUri} --region ${region}`);
+
+    // 3) Set output values
+    const websiteUrl = `https://${bucketName}.s3.${region}.amazonaws.com/index.html`;
+    core.setOutput('website-url', websiteUrl);
     core.notice('Hello from my custom JavaScript action!');
 }
 
