@@ -9,8 +9,9 @@ function run() {
     const distFolder = core.getInput('dist-folder', { required: true });
 
     // 2) Upload files to S3
-    // will be executed in a regular shell in our runner
     const bucketUri = `s3://${bucketName}`;
+    // will be executed in a regular shell in our runner
+    // will automatically look for aws access key and secret key in the environment variables
     exec.exec(`aws s3 sync ${distFolder} ${bucketUri} --region ${region}`);
     core.notice('Hello from my custom JavaScript action!');
 }
